@@ -1,0 +1,16 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Edit Quiz</h2>
+    <form action="/quizzes/<%= quiz._id %>/edit?_method=PUT" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Quiz Title</label>
+            <input type="text" id="title" name="title" class="form-control" value="<%= quiz.title %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control"><%= quiz.description %></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+    </form>
+</div>

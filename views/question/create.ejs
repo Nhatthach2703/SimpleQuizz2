@@ -1,0 +1,30 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Create Question</h2>
+    <form action="/questions/create" method="POST">
+        <div class="mb-3">
+            <label for="text" class="form-label">Question Text</label>
+            <input type="text" class="form-control" id="text" name="text" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="options" class="form-label">Options (comma-separated)</label>
+            <input type="text" class="form-control" id="options" name="options" required>
+        </div>
+    
+        <div class="mb-3">
+            <label for="correctAnswerIndex" class="form-label">Correct Answer Index (comma-separated)</label>
+            <input type="text" class="form-control" id="correctAnswerIndex" name="correctAnswerIndex" required>
+        </div>
+    
+        <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords (optional, comma-separated)</label>
+            <input type="text" class="form-control" id="keywords" name="keywords">
+        </div>
+
+        <input type="hidden" name="author" value="<%= user ? user.id : '' %>" required>
+    
+        <button type="submit" class="btn btn-primary">Create Question</button>
+    </form>    
+</div>

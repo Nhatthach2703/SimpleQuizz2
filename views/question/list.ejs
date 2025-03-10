@@ -1,0 +1,32 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Question List</h2>
+    <a href="/questions/create" class="btn btn-success mb-3">Create New Question</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% questions.forEach((question, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= question.text %></td>
+                    <td><%= question.author ? question.author.username : "Unknown" %></td>
+                    <td>
+                        <a href="/questions/<%= question._id %>" class="btn btn-info">View</a>
+                        <a href="/questions/<%= question._id %>/edit" class="btn btn-warning">Edit</a>
+                        <form action="/questions/<%= question._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

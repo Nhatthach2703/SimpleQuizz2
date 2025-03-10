@@ -1,0 +1,17 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Create Quiz</h2>
+    <form action="/quizzes/create" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Quiz Title</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    <a href="/quizzes" class="btn btn-secondary mt-3">Back to List</a>
+</div>

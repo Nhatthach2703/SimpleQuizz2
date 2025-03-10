@@ -1,0 +1,35 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Add Question to <%= quiz.title %></h2>
+
+    <form action="/quizzes/<%= quiz._id %>/question" method="POST">
+        <!-- Không cần gửi author từ form, xử lý ở backend -->
+        
+        <div class="mb-3">
+            <label for="text" class="form-label">Question Text</label>
+            <input type="text" id="text" name="text" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="options" class="form-label">Options (comma separated)</label>
+            <input type="text" id="options" name="options" class="form-control" required>
+            <small class="text-muted">Example: Option1, Option2, Option3</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="correctAnswerIndex" class="form-label">Correct Answers (comma separated)</label>
+            <input type="text" id="correctAnswerIndex" name="correctAnswerIndex" class="form-control" required>
+            <small class="text-muted">Example: 0, 2 (Indexes start from 0)</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords (optional, comma separated)</label>
+            <input type="text" id="keywords" name="keywords" class="form-control">
+            <small class="text-muted">Example: math, algebra, equations</small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Create Question</button>
+        <a href="/quizzes/<%= quiz._id %>" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

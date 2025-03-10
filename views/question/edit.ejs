@@ -1,0 +1,35 @@
+<% layout = '../layouts/main'; %>
+
+<div class="container mt-4">
+    <h2>Edit Question</h2>
+    <form action="/questions/<%= question._id %>/edit?_method=PUT" method="POST">
+        <% if (question.author) { %>
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input type="text" class="form-control" value="<%= question.author.username || question.author._id %>" disabled>
+            </div>
+        <% } %>
+        <div class="mb-3">
+            <label for="text" class="form-label">Question Text</label>
+            <input type="text" id="text" name="text" class="form-control" value="<%= question.text %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="options" class="form-label">Options (comma separated)</label>
+            <input type="text" id="options" name="options" class="form-control" value="<%= question.options.join(', ') %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="correctAnswerIndex" class="form-label">Correct Answers (comma separated)</label>
+            <input type="text" id="correctAnswerIndex" name="correctAnswerIndex" class="form-control" value="<%= question.correctAnswerIndex.join(', ') %>" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords (comma separated, optional)</label>
+            <input type="text" id="keywords" name="keywords" class="form-control" value="<%= question.keywords.join(', ') %>">
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Question</button>
+        <a href="/questions" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
